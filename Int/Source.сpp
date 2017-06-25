@@ -1,0 +1,203 @@
+#include"TInteger.h"
+
+TInteger::TInteger()
+{}
+
+TInteger::TInteger(long long int sum)
+{
+	Check(sum);
+	Sum = sum;
+}
+
+TInteger::~TInteger()
+{
+
+}
+
+std::ostream & operator<<(std::ostream &out, const TInteger &obj)
+{
+	out << obj.Sum;
+	return out;
+}
+
+bool TInteger::Check(long long int sum)
+{
+	if (sum > MAX_VALUE || sum < MIN_VALUE) throw excess();
+	return true;
+}
+
+
+TInteger operator+(const TInteger &a, const TInteger &b)
+{
+	return TInteger(a) += TInteger(b);
+}
+
+TInteger operator+(const TInteger &a, const long long int sum)
+{
+	return TInteger(a) += sum;
+}
+
+TInteger operator+(const long long int sum, const TInteger &a)
+{
+	return TInteger(a) += sum;
+}
+TInteger operator-(const TInteger &a, const TInteger &b)
+{
+	return TInteger(a) -= TInteger(b);
+}
+
+TInteger operator-(const TInteger &a, const long long int sum)
+{
+	return TInteger(a) -= sum;
+}
+
+TInteger operator-(const long long int sum, const TInteger &a)
+{
+	return TInteger(a) -= sum;
+}
+TInteger operator*(const TInteger &a, const TInteger &b)
+{
+	return TInteger(a) *= TInteger(b);
+}
+
+TInteger operator*(const TInteger &a, const long long int sum)
+{
+	return TInteger(a) *= sum;
+}
+
+TInteger operator*(const long long int sum, const TInteger &a)
+{
+	return TInteger(a) *= sum;
+}
+TInteger operator%(const TInteger &a, const TInteger &b)
+{
+	return TInteger(a) %= TInteger(b);
+}
+
+TInteger operator%(const TInteger &a, const long long int sum)
+{
+	return TInteger(a) %= sum;
+}
+
+TInteger operator%(const long long int sum, const TInteger &a)
+{
+	return TInteger(a) %= sum;
+}
+
+TInteger & TInteger::operator=(const TInteger & obj)
+{
+	Sum = obj.Sum;
+	return *this;
+}
+
+TInteger & TInteger::operator=(const long long int sum)
+{
+	Check(sum);
+	Sum = sum;
+	return *this;
+}
+
+bool TInteger::operator==(const TInteger & obj)
+{
+	if (obj.Sum == this->Sum) return true;
+	return false;
+}
+
+bool TInteger::operator==(const long long int data)
+{
+	Check(data);
+	if (data == this->Sum) return true;
+	return false;
+}
+
+TInteger & TInteger::operator+=(const TInteger & obj)
+{
+	long long int sum1 = Sum + obj.Sum;
+	Check(sum1);
+	Sum = sum1;
+	return *this;
+}
+
+TInteger & TInteger::operator+=(const long long int sum)
+{
+	Check(sum);
+	long long int sum1 = Sum + sum;
+	Check(sum1);
+	Sum = sum1;
+	return *this;
+}
+
+TInteger & TInteger::operator-=(const TInteger & obj)
+{
+	long long int sum1 = Sum - obj.Sum;
+	Check(sum1);
+	Sum = sum1;
+	return *this;
+}
+
+TInteger & TInteger::operator-=(const long long int sum)
+{
+	Check(sum);
+	long long int sum1 = Sum - sum;
+	Check(sum1);
+	Sum = sum1;
+	return *this;
+}
+
+TInteger & TInteger::operator/=(const TInteger & obj)
+{
+	Sum /= obj.Sum;
+	return *this;
+}
+
+TInteger & TInteger::operator/=(const long long int sum)
+{
+	Check(sum);
+	Sum /= sum;
+	return *this;
+}
+
+TInteger & TInteger::operator*=(const TInteger & obj)
+{
+	long long int sum1 = Sum * obj.Sum;
+	Check(sum1);
+	Sum = sum1;
+	return *this;
+}
+
+TInteger & TInteger::operator*=(const long long int sum)
+{
+	Check(sum);
+	long long int sum1 = Sum * sum;
+	Check(sum1);
+	Sum = sum1;
+	return *this;
+}
+
+TInteger & TInteger::operator%=(const TInteger & obj)
+{
+	Sum = Sum % obj.Sum;
+	return *this;
+}
+
+TInteger & TInteger::operator%=(const long long int sum)
+{
+	Check(sum);
+	Sum = Sum % sum;
+	return *this;
+}
+
+TInteger operator/(const TInteger &a, const TInteger &b) 
+{
+	return TInteger(a) /= TInteger(b);
+}
+
+TInteger operator/(const TInteger &a, const long long int sum)
+{
+	return TInteger(a) /= sum;
+}
+
+TInteger operator/(const long long int sum, const TInteger &a)
+{
+	return TInteger(a) /= sum;
+};
